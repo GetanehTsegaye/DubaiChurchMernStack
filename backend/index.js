@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import educationalLevelRoute from "./routes/educationalLevelRoute.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -9,6 +10,19 @@ const app = express();
 
 //Middleware for parsing request body
 app.use(express.json());
+
+//Middleware for handling CORS POLICY
+//Allow all origins
+app.use(cors());
+
+//Alow Custom Origins
+// app.use(
+//   cors({
+//     origin:'http://localhost:3000/',
+//     methods:['GET','POST','PUT','DELETE'],
+//     allowedHeaders:['Content-Type'],
+//   })
+// )
 
 app.use("/educationalLevel", educationalLevelRoute);
 
