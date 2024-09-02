@@ -42,7 +42,7 @@ router.get("/", async (request, response) => {
 router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
-    const educationalLevel = await EducationalLevel.find({});
+    const educationalLevel = await EducationalLevel.findById(id);
     return response.status(200).json(educationalLevel);
   } catch (error) {
     console.log(error.message);
